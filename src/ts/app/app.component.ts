@@ -1,26 +1,23 @@
 import { Component } from "@angular/core";
 
+import { FormControl, Validators } from "@angular/forms";
+
 @Component({
     selector: "main",
-    styles: [
-        "input.ng-invalid.ng-touched { border: 2px solid red; margin: 5px; }",
-        "input + span { display: none; }",
-        "input.ng-invalid.ng-touched + span { display: inline; }",
-    ],
     template: `
-        <form #f="ngForm">
-            <span *ngIf="f.valid">The form is Valid</span>
-            <fieldset #g="ngModelGroup" ngModelGroup="someGroup">
-                <span *ngIf="g.valid">The Model Group is Valid</span>
-                <input #c="ngModel" type="text" id="message-input" name="messageInput" required [(ngModel)]="message">
-                <span>Message id required.</span>
-                <span *ngIf="c.valid">The Model (control) is Valid</span>
-            </fieldset>
-        </form>
+        <div>
+            <label for="message-input">Message:</label>
+            <input type="text" id="message-input" [formControl]="messageControl">
+            <span *ngIf="messageControl.invalid && messageControl.touched">
+                Please enter a message.
+            </span>
+        </div>
     `,
 })
 export class AppComponent {
 
     public message: string = "";
+
+    public messageControl = new FormControl("", Validators.required);
 
 }
