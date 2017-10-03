@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
 
-import { FormControl, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
     selector: "main",
     template: `
-        <div>
+        <div [formGroup]="formGroup">
             <label for="message-input">Message:</label>
-            <input type="text" id="message-input" [formControl]="messageControl">
-            <span *ngIf="messageControl.invalid && messageControl.touched">
+            <input type="text" id="message-input" formControlName="messageControl">
+            <span *ngIf="formGroup.controls.messageControl.invalid && formGroup.controls.messageControl.touched">
                 Please enter a message.
             </span>
         </div>
@@ -18,6 +18,8 @@ export class AppComponent {
 
     public message: string = "";
 
-    public messageControl = new FormControl("", Validators.required);
+    public formGroup = new FormGroup({
+        messageControl: new FormControl("", Validators.required)
+    });
 
 }
