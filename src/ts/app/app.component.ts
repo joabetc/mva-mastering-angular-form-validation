@@ -14,7 +14,7 @@ import { Component } from "@angular/core";
                     <label for="phone-number-input">Phone Number:</label>
                     <input type="text" id="phone-number-input" name="phoneNumberInput" 
                         pattern="^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$" 
-                        [(ngModel)]="phoneNumber">
+                        required [(ngModel)]="phoneNumber">
                     <span>Phone Number is invalid.</span>
                 </div>
             </fieldset>
