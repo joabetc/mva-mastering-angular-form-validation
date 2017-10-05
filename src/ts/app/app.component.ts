@@ -11,11 +11,10 @@ import { Component } from "@angular/core";
         <form>
             <fieldset #g="ngModelGroup" ngModelGroup="someGroup">
                 <div>
-                    <label for="phone-number-input">Phone Number:</label>
-                    <input type="text" id="phone-number-input" name="phoneNumberInput" 
-                        pattern="^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$" 
-                        required [(ngModel)]="phoneNumber">
-                    <span>Phone Number is invalid.</span>
+                    <label for="email-address-input">Email Address:</label>
+                    <input type="email" id="email-address-input" name="emailAddressInput" 
+                        email required [(ngModel)]="emailAddress">
+                    <span>Email Address is invalid.</span>
                 </div>
             </fieldset>
         </form>
